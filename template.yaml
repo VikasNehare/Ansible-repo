@@ -7,9 +7,9 @@
         name: "{{item}}"
         state: present
       loop:
-        -http
-        -wget
-        -unzip
+        - httpd
+        - wget
+        - unzip
 
     - name: download template
       ansible.builtin.get_url:
