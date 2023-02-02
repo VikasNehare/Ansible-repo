@@ -1,0 +1,28 @@
+- name: Templet hosting in playbook
+  hosts: all
+  become: yes
+  tasks: 
+    - name: package installtion
+      ansible.builtin.package:
+        name: "{{item}}"
+        state: present
+      loop:
+        -http
+        -wget
+        -unzip
+
+    - name: download template
+      ansible.builtin.get_url:
+        url: https://www.free-css.com/assets/files/free-css-templates/download/page287/eflyer.zip
+        dest: /home/ec2-user/
+        remote_src: true 
+
+
+    - name: unzip template 
+      ansible.buitin.unarchive:
+        src: /home/ec2-user/eflyer.zip
+        dest: /var/www/html/
+        remote_src: true
+
+    - name: restart httpd services
+      shell: systemctl restart httpd      
