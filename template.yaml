@@ -7,7 +7,7 @@
         name: "{{item}}"
         state: present
       loop:
-        - httpd
+        - apache2
         - wget
         - unzip
 
@@ -24,4 +24,4 @@
         remote_src: true
 
     - name: restart httpd services
-      shell: systemctl restart httpd      
+      shell: systemctl restart apache2     
