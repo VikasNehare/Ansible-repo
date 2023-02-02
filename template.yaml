@@ -14,13 +14,12 @@
     - name: download template
       ansible.builtin.get_url:
         url: https://www.free-css.com/assets/files/free-css-templates/download/page287/eflyer.zip
-        dest: /home/ec2-user/
+        dest: /home/ubuntu/
         remote_src: true 
 
-
     - name: unzip template 
-      ansible.buitin.unarchive:
-        src: /home/ec2-user/eflyer.zip
+      ansible.builtin.unarchive:
+        src: /home/ubuntu/eflyer.zip
         dest: /var/www/html/
         remote_src: true
 
